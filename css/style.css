@@ -152,8 +152,7 @@
       inset: 0 0 auto;
       z-index: 100;
       border-bottom: 1px solid rgba(201,168,76,.18);
-      background: rgba(8,18,37,.75);
-      backdrop-filter: blur(18px);
+      background: #020e2a;
     }
 
     .nav-inner {
@@ -271,16 +270,16 @@
       isolation: isolate;
       width: min(100%, 470px);
       margin-left: auto;
-      padding: 18px;
+      padding: 0;
     }
 
     .photo-frame::before {
       content: "";
       position: absolute;
-      inset: 0 38px 54px 0;
+      inset: 0 20px 36px 0;
       z-index: -1;
       border: 1px solid var(--gold);
-      transform: translate(18px, -18px);
+      transform: translate(0, 0);
     }
 
     .photo-frame::after {
@@ -994,7 +993,7 @@
       }
 
       .photo-frame {
-        padding: 12px;
+        padding: 0;
       }
 
       .photo-frame img,
