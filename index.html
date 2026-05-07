@@ -8,14 +8,89 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    .site-loader {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: grid;
+      place-items: center;
+      width: 100vw;
+      height: 100vh;
+      background: #0f1e3d;
+      transition: opacity .6s ease, transform .6s cubic-bezier(.76, 0, .24, 1), visibility .6s ease;
+    }
+
+    .site-loader.is-hidden {
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-100%);
+    }
+
+    .loader-inner {
+      display: grid;
+      justify-items: center;
+      gap: 24px;
+      width: min(78vw, 420px);
+    }
+
+    .loader-logo {
+      width: min(72vw, 360px);
+      opacity: 0;
+      transform: scale(.85);
+      animation: loaderLogoIn .9s ease forwards;
+    }
+
+    .loader-bar {
+      width: min(64vw, 320px);
+      height: 3px;
+      overflow: hidden;
+      background: rgba(255,255,255,.16);
+    }
+
+    .loader-bar span {
+      display: block;
+      width: 100%;
+      height: 100%;
+      background: #c9a84c;
+      transform: scaleX(0);
+      transform-origin: left;
+      animation: loaderProgress 1.8s ease forwards;
+    }
+
+    .page-shell {
+      opacity: 0;
+      transition: opacity .7s ease;
+    }
+
+    body.is-loaded .page-shell {
+      opacity: 1;
+    }
+
+    @keyframes loaderLogoIn {
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes loaderProgress {
+      to { transform: scaleX(1); }
+    }
+  </style>
 
 </head>
 <body>
+  <div class="site-loader" aria-hidden="true">
+    <div class="loader-inner">
+      <img class="loader-logo" src="assets/img/novoLogoH2.png" alt="" loading="eager" fetchpriority="high" />
+      <div class="loader-bar"><span></span></div>
+    </div>
+  </div>
+  <div class="page-shell">
   <nav class="nav" aria-label="Navegação principal">
     <div class="container nav-inner">
       <a class="brand" href="#inicio" aria-label="Consultoria Psico&RH">
-        <img class="brand-logo" src="assets/img/novoLogoH2.png" alt="Consultoria Psico&RH" />
+        <img class="brand-logo" src="assets/img/novoLogoH2.png" alt="Consultoria Psico&RH" loading="eager" fetchpriority="high" />
         <span>
           <span>Consultoria Psico&RH</span>
           <small>Ana Paula Teixeira</small>
@@ -38,8 +113,8 @@
           </div>
         </div>
 
-        <div class="photo-frame reveal" style="transition-delay: .12s">
-          <img src="assets/img/img3.jpeg" alt="Ana Paula Teixeira em ambiente corporativo" />
+        <div class="photo-frame reveal" style="transition-delay: .12s" data-aos="fade-left">
+          <img src="assets/img/img3.jpeg" alt="Ana Paula Teixeira em ambiente corporativo" loading="eager" fetchpriority="high" />
           <div class="photo-card">
             <strong>Ana Paula Teixeira</strong>
             CRP 06/183654 · Psicóloga Organizacional
@@ -59,7 +134,7 @@
       <div class="container pain-grid">
         <div class="reveal">
           <span class="eyebrow">Diagnóstico empresarial</span>
-          <h2 class="section-title">Sua empresa reconhece esses sinais?</h2>
+          <h2 class="section-title" data-aos="fade-up" data-aos-delay="0">Sua empresa reconhece esses sinais?</h2>
           <p class="section-copy">Antes de virar crise, a saúde mental corporativa se manifesta em indicadores silenciosos: clima instável, falhas de comunicação, retrabalho e decisões de contratação que custam caro.</p>
           <div class="alert-box">
             <h3>Ignorar isso pode gerar:</h3>
@@ -76,12 +151,12 @@
         </div>
 
         <div class="pain-cards">
-          <article class="pain-card reveal"><span class="card-icon">◌</span><p>Colaboradores desmotivados e baixa energia nas entregas.</p></article>
-          <article class="pain-card reveal"><span class="card-icon">◇</span><p>Afastamentos frequentes e sinais de adoecimento emocional.</p></article>
-          <article class="pain-card reveal"><span class="card-icon">◍</span><p>Conflitos internos que desgastam líderes e equipes.</p></article>
-          <article class="pain-card reveal"><span class="card-icon">NR</span><p>Dificuldade para lidar com exigências da NR-1.</p></article>
-          <article class="pain-card reveal"><span class="card-icon">✓</span><p>Contratações erradas que aumentam turnover e custo operacional.</p></article>
-          <article class="pain-card final reveal"><span class="card-icon">Ψ</span><p>Você não está sozinho. A saúde mental no trabalho agora é obrigação estratégica e legal.</p></article>
+          <article class="pain-card reveal" data-aos="fade-up" data-aos-delay="100"><span class="card-icon">😔</span><p>Colaboradores desmotivados e baixa energia nas entregas.</p></article>
+          <article class="pain-card reveal" data-aos="fade-up" data-aos-delay="200"><span class="card-icon">🏥</span><p>Afastamentos frequentes e sinais de adoecimento emocional.</p></article>
+          <article class="pain-card reveal" data-aos="fade-up" data-aos-delay="300"><span class="card-icon">⚡</span><p>Conflitos internos que desgastam líderes e equipes.</p></article>
+          <article class="pain-card reveal" data-aos="fade-up" data-aos-delay="400"><span class="card-icon">📋</span><p>Dificuldade para lidar com exigências da NR-1.</p></article>
+          <article class="pain-card reveal" data-aos="fade-up" data-aos-delay="500"><span class="card-icon">❌</span><p>Contratações erradas que aumentam turnover e custo operacional.</p></article>
+          <article class="pain-card final reveal" data-aos="fade-up" data-aos-delay="600"><span class="card-icon">Ψ</span><p>Você não está sozinho. A saúde mental no trabalho agora é obrigação estratégica e legal.</p></article>
         </div>
       </div>
     </section>
@@ -90,15 +165,15 @@
       <div class="container">
         <div class="benefits-head reveal">
           <span class="eyebrow">Resultados práticos</span>
-          <h2 class="section-title center">Psicologia aplicada à gestão, à prevenção e à performance.</h2>
+          <h2 class="section-title center" data-aos="fade-up" data-aos-delay="0">Psicologia aplicada à gestão, à prevenção e à performance.</h2>
         </div>
         <div class="benefits-grid">
-          <article class="benefit-card reveal"><span class="card-icon">↓</span><h3>Menos afastamentos</h3><p>Mapeamento de riscos e ações preventivas para reduzir adoecimento e interrupções.</p></article>
-          <article class="benefit-card reveal"><span class="card-icon">◐</span><h3>Clima saudável</h3><p>Ambientes com mais escuta, segurança psicológica e relações de trabalho maduras.</p></article>
-          <article class="benefit-card reveal"><span class="card-icon">↑</span><h3>Produtividade elevada</h3><p>Equipes com mais clareza, foco e disponibilidade emocional para executar melhor.</p></article>
-          <article class="benefit-card reveal"><span class="card-icon">NR</span><h3>Adequação NR-1</h3><p>Diagnóstico, relatórios e plano de ação para riscos psicossociais.</p></article>
-          <article class="benefit-card reveal"><span class="card-icon">§</span><h3>Segurança jurídica</h3><p>Documentação técnica e condução ética para apoiar decisões organizacionais.</p></article>
-          <article class="benefit-card reveal"><span class="card-icon">✓</span><h3>Contratações assertivas</h3><p>Processos seletivos com avaliação psicológica, perfil comportamental e critérios claros.</p></article>
+          <article class="benefit-card reveal" data-aos="fade-up" data-aos-delay="100"><span class="card-icon">📉</span><h3>Menos afastamentos</h3><p>Mapeamento de riscos e ações preventivas para reduzir adoecimento e interrupções.</p></article>
+          <article class="benefit-card reveal" data-aos="fade-up" data-aos-delay="200"><span class="card-icon">🌿</span><h3>Clima saudável</h3><p>Ambientes com mais escuta, segurança psicológica e relações de trabalho maduras.</p></article>
+          <article class="benefit-card reveal" data-aos="fade-up" data-aos-delay="300"><span class="card-icon">🚀</span><h3>Produtividade elevada</h3><p>Equipes com mais clareza, foco e disponibilidade emocional para executar melhor.</p></article>
+          <article class="benefit-card reveal" data-aos="fade-up" data-aos-delay="400"><span class="card-icon">✅</span><h3>Adequação NR-1</h3><p>Diagnóstico, relatórios e plano de ação para riscos psicossociais.</p></article>
+          <article class="benefit-card reveal" data-aos="fade-up" data-aos-delay="500"><span class="card-icon">⚖️</span><h3>Segurança jurídica</h3><p>Documentação técnica e condução ética para apoiar decisões organizacionais.</p></article>
+          <article class="benefit-card reveal" data-aos="fade-up" data-aos-delay="600"><span class="card-icon">🎯</span><h3>Contratações assertivas</h3><p>Processos seletivos com avaliação psicológica, perfil comportamental e critérios claros.</p></article>
         </div>
         <div class="section-actions" style="justify-content:center">
           <a class="btn gold" href="https://wa.me/5511968357776" target="_blank" rel="noopener">Quero esses resultados</a>
@@ -111,13 +186,13 @@
         <div class="services-head reveal">
           <div>
             <span class="eyebrow">Soluções</span>
-            <h2 class="section-title">Serviços desenhados para empresas que levam pessoas a sério.</h2>
+            <h2 class="section-title" data-aos="fade-up" data-aos-delay="0">Serviços desenhados para empresas que levam pessoas a sério.</h2>
           </div>
           <p class="section-copy">Atuação consultiva, técnica e humana para reduzir riscos, elevar maturidade organizacional e proteger o negócio.</p>
         </div>
 
         <div class="services-grid">
-          <article class="service-card reveal">
+          <article class="service-card reveal" data-aos="fade-up" data-aos-delay="100">
             <div class="service-top">
               <span class="service-num">01</span>
               <span class="service-badge">NR-1</span>
@@ -132,7 +207,7 @@
             </div>
           </article>
 
-          <article class="service-card reveal">
+          <article class="service-card reveal" data-aos="fade-up" data-aos-delay="200">
             <div class="service-top">
               <span class="service-num">02</span>
               <span class="service-badge">90 dias</span>
@@ -149,7 +224,7 @@
             </div>
           </article>
 
-          <article class="service-card reveal">
+          <article class="service-card reveal" data-aos="fade-up" data-aos-delay="300">
             <div class="service-top">
               <span class="service-num">03</span>
               <span class="service-badge">Cuidado</span>
@@ -165,7 +240,7 @@
             </div>
           </article>
 
-          <article class="service-card reveal">
+          <article class="service-card reveal" data-aos="fade-up" data-aos-delay="400">
             <div class="service-top">
               <span class="service-num">04</span>
               <span class="service-badge">Cultura</span>
@@ -188,11 +263,11 @@
     </section>
 
     <section class="nr-banner">
-      <div class="container nr-inner reveal">
+      <div class="container nr-inner reveal" data-aos="zoom-in">
         <div class="nr-mark">NR1</div>
         <div>
           <span class="eyebrow">Alerta estratégico</span>
-          <h2>Sua empresa está preparada para a nova NR-1? Não espere a fiscalização chegar.</h2>
+          <h2 data-aos="fade-up" data-aos-delay="0">Sua empresa está preparada para a nova NR-1? Não espere a fiscalização chegar.</h2>
         </div>
         <a class="btn gold" href="https://wa.me/5511968357776" target="_blank" rel="noopener">Adequar agora</a>
       </div>
@@ -200,12 +275,12 @@
 
     <section class="light" id="quem-faz">
       <div class="container about-grid">
-        <div class="about-photo reveal">
-          <img src="assets/img/img5.jpeg" alt="Ana Paula Teixeira em atendimento corporativo" />
+        <div class="about-photo reveal" data-aos="fade-right">
+          <img src="assets/img/img5.jpeg" alt="Ana Paula Teixeira em atendimento corporativo" loading="lazy" />
         </div>
         <div class="reveal">
           <span class="eyebrow">Quem faz</span>
-          <h2 class="section-title">Ana Paula Teixeira</h2>
+          <h2 class="section-title" data-aos="fade-up" data-aos-delay="0">Ana Paula Teixeira</h2>
           <p class="serif-italic" style="margin-top:14px;font-size:2rem;color:var(--navy);line-height:1.1">Psicóloga Organizacional</p>
           <span class="badge">CRP 06/183654</span>
           <div class="about-copy">
@@ -224,26 +299,26 @@
       <div class="container">
         <div class="reveal" style="text-align:center">
           <span class="eyebrow" style="justify-content:center">Prova social</span>
-          <h2 class="section-title center">Indicadores que justificam a decisão antes da crise.</h2>
+          <h2 class="section-title center" data-aos="fade-up" data-aos-delay="0">Indicadores que justificam a decisão antes da crise.</h2>
         </div>
         <div class="proof-grid">
-          <article class="proof-card reveal"><strong>↓35%</strong><span>afastamentos</span></article>
-          <article class="proof-card reveal"><strong>4×</strong><span>ROI</span></article>
-          <article class="proof-card reveal"><strong>↑28%</strong><span>engajamento</span></article>
+          <article class="proof-card reveal" data-aos="flip-up" data-aos-delay="200"><strong>↓35%</strong><span>afastamentos</span></article>
+          <article class="proof-card reveal" data-aos="flip-up" data-aos-delay="200"><strong>4×</strong><span>ROI</span></article>
+          <article class="proof-card reveal" data-aos="flip-up" data-aos-delay="200"><strong>↑28%</strong><span>engajamento</span></article>
         </div>
 
         <div class="testimonials">
-          <article class="testimonial-card reveal">
+          <article class="testimonial-card reveal" data-aos="fade-up" data-aos-delay="100">
             <div class="quote-mark">“</div>
             <p>Depois das ações, percebemos uma equipe muito mais engajada e produtiva.</p>
             <div class="person"><div class="avatar">RH</div><div><strong>Marina Costa</strong><small>Gerente de RH</small></div></div>
           </article>
-          <article class="testimonial-card reveal">
+          <article class="testimonial-card reveal" data-aos="fade-up" data-aos-delay="200">
             <div class="quote-mark">“</div>
             <p>O processo seletivo ficou muito mais assertivo. O turnover caiu.</p>
             <div class="person"><div class="avatar">DP</div><div><strong>Renato Alves</strong><small>Diretor de Pessoas</small></div></div>
           </article>
-          <article class="testimonial-card reveal">
+          <article class="testimonial-card reveal" data-aos="fade-up" data-aos-delay="300">
             <div class="quote-mark">“</div>
             <p>Conseguimos nos adequar à NR-1 com total segurança jurídica.</p>
             <div class="person"><div class="avatar">CO</div><div><strong>Carla Mendes</strong><small>COO</small></div></div>
@@ -258,7 +333,7 @@
     <section class="final-cta" id="contato">
       <div class="container reveal">
         <span class="eyebrow" style="justify-content:center">Próximo passo</span>
-        <h2 class="section-title center">Não espere o problema aparecer. Aja agora.</h2>
+        <h2 class="section-title center" data-aos="fade-up" data-aos-delay="0">Não espere o problema aparecer. Aja agora.</h2>
         <p class="section-copy serif-italic">Uma conversa técnica pode revelar riscos, oportunidades e caminhos concretos para proteger sua empresa e sua equipe.</p>
         <div class="section-actions">
           <a class="btn green" href="https://wa.me/5511968357776" target="_blank" rel="noopener">Quero transformar minha empresa</a>
@@ -277,7 +352,7 @@
   <footer class="footer">
     <div class="container footer-inner">
       <div class="footer-brand">
-        <img src="assets/img/logoFooter.jpeg" alt="Consultoria Psico&RH" />
+        <img src="assets/img/logoFooter.jpeg" alt="Consultoria Psico&RH" loading="lazy" />
         <div>
           <strong>Consultoria Psico&RH</strong>
           <span>CRP 06/183654 · Av. Paulista, 777 · Bela Vista · SP · CEP 01310-000</span>
@@ -296,6 +371,10 @@
       <path d="M16.02 3.2A12.64 12.64 0 0 0 5.11 22.22L3.5 28.8l6.73-1.57A12.64 12.64 0 1 0 16.02 3.2Zm0 22.93c-1.92 0-3.79-.54-5.42-1.57l-.39-.24-3.98.93.95-3.87-.25-.4a10.31 10.31 0 1 1 9.09 5.15Zm5.66-7.72c-.31-.16-1.84-.91-2.12-1.01-.28-.1-.49-.16-.69.16-.21.31-.8 1.01-.98 1.22-.18.21-.36.23-.67.08-.31-.16-1.31-.48-2.5-1.53-.92-.82-1.54-1.84-1.72-2.15-.18-.31-.02-.48.14-.64.14-.14.31-.36.47-.54.16-.18.21-.31.31-.52.1-.21.05-.39-.03-.54-.08-.16-.69-1.66-.95-2.27-.25-.6-.5-.52-.69-.53h-.59c-.21 0-.54.08-.82.39-.28.31-1.08 1.06-1.08 2.58s1.11 2.99 1.26 3.2c.16.21 2.18 3.33 5.28 4.67.74.32 1.31.51 1.76.65.74.24 1.42.2 1.95.12.6-.09 1.84-.75 2.1-1.48.26-.73.26-1.35.18-1.48-.08-.13-.28-.21-.59-.36Z"/>
     </svg>
   </a>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   <script src="js/script.js"></script>
 </body>
 </html>
